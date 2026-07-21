@@ -1,84 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Rubik:wght@400;700&display=swap');
+
+:root {
+  --bg-gradient: linear-gradient(135deg, #0d0d11 0%, #1d2130 100%);
+  --calc-bg: #22252d;
+  --visor-bg: #2a2f3b;
+  --text-primary: #ffffff;
+  --text-secondary: #a5a5a5;
+  --btn-num-bg: #292d36;
+  --btn-num-hover: #353a46;
+  --btn-op-bg: #ff9f0a;
+  --btn-op-hover: #cc7f08;
+  --btn-action-bg: #ff453a;
+  --btn-action-hover: #d12c24;
+}
+
 * {
-     margin:0;
-     padding:0;
- }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: var(--bg-gradient);
+  min-height: 100vh;
+  color: var(--text-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
 
 .fundo {
-   background-image:linear-gradient(45deg, black, lightblue);
-   height:100vh;
-   color:white;
-   font-family:arial;
-   text-align:center;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem;
 }
 
-#nome{
-    padding-top:15px;
+#nome {
+  font-size: 1.25rem;
+  letter-spacing: 3px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  text-transform: uppercase;
 }
 
-h1 {
-    margin-bottom:5px;
-}
-
+/* Calculadora Container */
 .calculadora {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    background: #5c5859;
-    padding: 17px 14px;
-    border-radius: 20px;
-    box-shadow: 0 5px 50px 0 rgba(0, 0, 0, .5);
-    box-shadow: inset 0 -5px 10px 5px rgba(0, 0, 0, .5);
-    transform: translate(-50%, -50%) scale(1);
+  background: var(--calc-bg);
+  width: 100%;
+  border-radius: 28px;
+  padding: 1.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-.botao {
-    width: 50px;
-    height: 50px;
-    font-size: 50px;
-    font-weight: 900;
-    position: relative;
-    left: 0;
-    right: 0;
-    margin: 4px;
-    border: none;
-    border-radius: 13px;
-    font-family: 'Rubik', sans-serif;
-    background: #f0eeef;
-    color: #3b3b3c;
-    box-shadow: inset 0 5px 10px 0 #fff,
-                inset 0 -5px 10px 3px #847a7aba,
-                0 5px 10px 0px #1e211e;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+.calculadora h1 {
+  display: none; /* Mantido semanticamente mas oculto visualmente */
 }
 
-.simbolo {
-	font-size: 30px;
+/* Visor Container */
+.visor-container {
+  background-color: var(--visor-bg);
+  width: 100%;
+  height: 100px;
+  border-radius: 18px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 1.5rem;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 }
 
-.divide {
-	font-size: 40px;
+.visor-expressao {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-family: 'Rubik', sans-serif;
+  letter-spacing: 1px;
+  word-break: break-all;
+  height: 1.2rem;
 }
 
-.menos {
-	font-size: 38px;
+.visor-resultado {
+  font-size: 2rem;
+  color: var(--text-primary);
+  font-weight: 700;
+  font-family: 'Rubik', sans-serif;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none; /* Remove barra em Firefox */
 }
 
-.botao:hover {
-    background-color:black;
+.visor-resultado::-webkit-scrollbar {
+  display: none; /* Remove barra em Chrome/Safari */
 }
 
-#resultado {
-    width:207px;
-    height:30px;
-    margin:auto;
-    background-color:lightgray;
-    font:32px arial;
-    color:black;
-    text-align:right;
-    padding:8px;
-    border-radius:3px;    
-    overflow: hidden;
+/* Teclado Grid */
+.teclado {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+/* Estilo Base de Botões */
+.btn {
+  border: none;
+  border-radius: 16px;
+  height: 60px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: 'Rubik', sans-serif;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.15s ease-in-out;
+  color: var(--text-primary);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+/* Categorias de Botões */
+.btn-num {
+  background-color: var(--btn-num-bg);
+}
+
+.btn-num:hover {
+  background-color: var(--btn-num-hover);
+}
+
+.btn-operator {
+  background-color: #3b4252;
+  color: #88c0d0;
+}
+
+.btn-operator:hover {
+  background-color: #434c5e;
+}
+
+.btn-action {
+  background-color: var(--btn-action-bg);
+}
+
+.btn-action:hover {
+  background-color: var(--btn-action-hover);
+}
+
+.btn-equal {
+  background-color: var(--btn-op-bg);
+  grid-row: span 2;
+  height: auto; /* Deixa o Grid calcular a altura automaticamente */
+}
+
+.btn-equal:hover {
+  background-color: var(--btn-op-hover);
+}
+
+.btn-zero {
+  grid-column: span 2;
+}
+
+/* Ajustes de Ícones */
+.btn i {
+  pointer-events: none; /* Evita que o ícone capture o clique do mouse */
 }
