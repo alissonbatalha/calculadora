@@ -1,66 +1,52 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calculadora</title>
-    <link rel="stylesheet" href="style.css" type="text/css" media="all" />
-    <script src="https://kit.fontawesome.com/32454bb80f.js" crossorigin="anonymous"></script>
-  </head>
-  <body>
-    <div class="fundo">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Calculadora moderna e segura construída com HTML, CSS e JavaScript" />
+  <title>Calculadora Profissional</title>
+  <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+  <script src="https://kit.fontawesome.com/32454bb80f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <main class="fundo">
+    <header>
       <h1 id="nome">ALISSON BATALHA</h1>
-      <div class="calculadora">
-        <h1>Calculadora</h1>
-        <p id="resultado"></p>
-        <table>
-          <tr>
-            <td><button class="botao" onclick="clean()">c</button></td>
-            <td><button class="botao simbolo" onclick="back()"><i class="fa-solid fa-delete-left"></i></button></td>
-            <td><button class="botao divide" onclick="insert('/')"><i class="fa-solid fa-divide"></i></button></td>
-            <td><button class="botao" onclick="insert('*')"><i class="fa-solid fa-xmark"></i></button></td>
-          </tr>
-          <tr>
-            <td><button class="botao" onclick="insert('7')">7</button></td>
-            <td><button class="botao" onclick="insert('8')">8</button></td>
-            <td><button class="botao" onclick="insert('9')">9</button></td>
-            <td><button class="botao" onclick="insert('-')"><i class="fa-solid fa-minus"></i></button></td>
-          </tr>
-          <tr>
-            <td><button class="botao" onclick="insert('4')">4</button></td>
-            <td><button class="botao" onclick="insert('5')">5</button></td>
-            <td><button class="botao" onclick="insert('6')">6</button></td>
-            <td><button class="botao" onclick="insert('+')"><i class="fa-solid fa-plus"></i></button></td>
-          </tr>
-          <tr>
-            <td><button class="botao" onclick="insert('1')">1</button></td>
-            <td><button class="botao" onclick="insert('2')">2</button></td>
-            <td><button class="botao" onclick="insert('3')">3</button></td>
-            <td rowspan="2">
-              <button
-                class="botao"
-                style="height: 106px"
-                onclick="calcular()"
-              >
-                =
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <button
-                class="botao"
-                style="width: 106px"
-                onclick="insert('0')"
-              >
-                0
-              </button>
-            </td>
-            <td><button class="botao" onclick="insert('.')">.</button></td>
-          </tr>
-        </table>
+    </header>
+
+    <section class="calculadora" aria-label="Calculadora Matemática">
+      <div id="visor" class="visor-container">
+        <div id="expressao" class="visor-expressao" aria-hidden="true"></div>
+        <div id="resultado" class="visor-resultado" role="status" aria-live="polite">0</div>
       </div>
-    </div>
-    <script src="script.js" type="text/javascript" charset="utf-8"></script>
-  </body>
+
+      <div class="teclado">
+        <button class="btn btn-action" data-action="clear" aria-label="Limpar tudo">C</button>
+        <button class="btn btn-action" data-action="backspace" aria-label="Apagar último caractere"><i class="fa-solid fa-delete-left"></i></button>
+        <button class="btn btn-operator" data-val="/" aria-label="Dividir"><i class="fa-solid fa-divide"></i></button>
+        <button class="btn btn-operator" data-val="*" aria-label="Multiplicar"><i class="fa-solid fa-xmark"></i></button>
+
+        <button class="btn btn-num" data-val="7">7</button>
+        <button class="btn btn-num" data-val="8">8</button>
+        <button class="btn btn-num" data-val="9">9</button>
+        <button class="btn btn-operator" data-val="-" aria-label="Subtrair"><i class="fa-solid fa-minus"></i></button>
+
+        <button class="btn btn-num" data-val="4">4</button>
+        <button class="btn btn-num" data-val="5">5</button>
+        <button class="btn btn-num" data-val="6">6</button>
+        <button class="btn btn-operator" data-val="+" aria-label="Somar"><i class="fa-solid fa-plus"></i></button>
+
+        <button class="btn btn-num" data-val="1">1</button>
+        <button class="btn btn-num" data-val="2">2</button>
+        <button class="btn btn-num" data-val="3">3</button>
+        <button class="btn btn-equal" data-action="calculate" aria-label="Calcular resultado">=</button>
+
+        <button class="btn btn-num btn-zero" data-val="0">0</button>
+        <button class="btn btn-num" data-val=".">.</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js" type="text/javascript" charset="utf-8"></script>
+</body>
 </html>
