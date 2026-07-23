@@ -1,0 +1,25 @@
+package_json = {
+"name": "calculadora",
+"version": "1.0.0",
+"description": "Uma calculadora web moderna, segura, acessível e responsiva construída com CSS Grid e JS Vanilla (Node 20).",
+"main": "script.js",
+"scripts": {
+"start": "lite-server",
+"test": "echo "Error: no test suite specified" && exit 0"
+},
+"keywords": [
+"calculator",
+"modern-css",
+"css-grid",
+"safe-evaluation",
+"vanilla-js"
+],
+"author": "Alisson Batalha",
+"license": "MIT",
+"engines": {
+"node": ">=20.0.0"
+},
+"devDependencies": {
+"lite-server": "^2.6.1"
+}
+}
